@@ -1,4 +1,5 @@
 import { Button } from "@/components/button";
+import TodoApp from "@/components/TodoApp";
 import Image from "next/image";
 
 export default async function Home() {
@@ -19,6 +20,7 @@ export default async function Home() {
         Hic, nemo. Laboriosam?
       </p>
       <Button />
+      <TodoApp />
     </div>
   );
 }
