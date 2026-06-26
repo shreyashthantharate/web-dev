@@ -1,0 +1,16 @@
+{
+  "name": "express-typescript",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsc-watch --onSuccess \"node dist/index.js\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "tsc-watch": "^7.2.0",
+    "typescript": "^6.0.3"
+  }
+}
