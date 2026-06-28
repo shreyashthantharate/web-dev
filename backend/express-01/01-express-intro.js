@@ -1,7 +1,7 @@
 const express = require("express");
 
 function block_1_basicServer() {
-  return new Promise((req, res) => {
+  return new Promise((resolve) => {
     const app = express();
     app.use(express.json());
 
@@ -51,7 +51,7 @@ function block_1_basicServer() {
 
         console.log("+++++++++++++++++++++++++++++++++++++");
 
-        const searchRes = await fetch(`${base}/search?q=iryani&limit=5`);
+        const searchRes = await fetch(`${base}/search?q=biryani&limit=5`);
         const searchData = await searchRes.json();
         console.log("GET /search", JSON.stringify(searchData));
 
@@ -82,14 +82,19 @@ function block_1_basicServer() {
       }
       server.close(() => {
         console.log("Block 1 served...");
-        // resolve();
+        resolve();
       });
     });
   });
 }
 
+function block_2_response() {
+  return new Promise(req);
+}
+
 async function main() {
   await block_1_basicServer();
+  await block_2_response();
 
   process.exit(0);
 }
