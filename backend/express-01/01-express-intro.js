@@ -30,6 +30,15 @@ function block_1_basicServer() {
         price: 149,
       });
     });
+
+    // post route
+    app.post("/order", (req, res) => {
+      const { order } = req.body;
+      res.status(201).json({
+        status: "received",
+        order: order,
+      });
+    });
   });
 }
 
