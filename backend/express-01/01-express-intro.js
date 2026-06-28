@@ -89,7 +89,71 @@ function block_1_basicServer() {
 }
 
 function block_2_response() {
-  return new Promise(req);
+  return new Promise((resolve) => {
+    const app = express();
+
+    // send text response
+    app.get("/text", (req, res) => {
+      res.send("Hello from express.");
+    });
+
+    // send json response
+    app.get("/json", (req, res) => {
+      res.json({
+        framework: "express",
+        version: "5.2.1",
+      });
+    });
+
+    // send 404 status
+    app.get("/not-found", (req, res) => {
+      res.status(404).json({
+        error: "Page not found",
+      });
+    });
+
+    // health route
+    app.get("/health", (req, res) => {
+      res.sendStatus(200);
+    });
+
+    // to redirect
+    app.get("/old-menu", (req, res) => {
+      // add entry in DB to see how many users are still visiting old route
+      res.redirect(301, "/new-menu");
+    });
+
+    // send xml response
+    app.get("/xml", (req, res) => {
+      res.type("application/xml").send("<dish><name>Biryani</name></dish>");
+    });
+
+    // custom headers
+    app.get("/custom-headers", (req, res) => {
+      res.set("X-Request_Id", "Express5");
+      res.json({
+        message: "Custom headers set",
+      });
+
+      // use in CORS, caching, tracing
+    });
+
+    // no-content response
+    app.get("/no-contenct", (req, res) => {
+      res.status(204).end;
+    });
+
+    const server = app.listen(0, async () => {
+      const port = server.address().port;
+      const base = `http://127.0.0.1:${port}`;
+
+      try {
+        // TODO
+      } catch (error) {
+        console.log(`Error: ${error}`);
+      }
+    });
+  });
 }
 
 async function main() {
