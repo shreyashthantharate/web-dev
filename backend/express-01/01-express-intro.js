@@ -94,7 +94,7 @@ function block_2_response() {
 
     // send text response
     app.get("/text", (req, res) => {
-      res.send("Hello from express.");
+      res.send("hello from express.");
     });
 
     // send json response
@@ -149,6 +149,15 @@ function block_2_response() {
 
       try {
         // TODO
+        const textReq = await fetch(`${base}/text`);
+        const textData = await textReq.text();
+        console.log(`Text Response: ${textData}`);
+
+        console.log("+++++++++++++++++++++++++++++++++++++");
+
+        const jsonReq = await fetch(`${base}/json`);
+        const jsonData = await jsonReq.json();
+        console.log(`JSON Response: ${JSON.stringify(jsonData)}`);
       } catch (error) {
         console.log(`Error: ${error}`);
       }
