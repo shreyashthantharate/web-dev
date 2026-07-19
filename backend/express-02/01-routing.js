@@ -5,6 +5,12 @@ function block_1_httpMethods() {
     const app = express();
     app.use(express.json());
 
+    // filepath
+    app.get("/files/*filepath", (req, res) => {
+      const filepath = req.params.filepath;
+      res.json({ filepath, type: "wildcard" });
+    });
+
     const routes = {
       1: {
         id: 1,
