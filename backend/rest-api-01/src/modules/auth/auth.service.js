@@ -44,6 +44,8 @@ const login = async ({ email, password }) => {
   if (!user) throw ApiError.unauthorized("Invalid email or password");
 
   // somhow I will check password
+  const isMatch = await user.comparePassword(password);
+  if (!isMatch) throw ApiError.unauthorized("Invalid email or password");
 
   if (user.isVerified) {
     ApiError.forbidden("Please verify your email before login.");
@@ -101,4 +103,4 @@ const forgotPassword = async (email) => {
   await user.save();
 };
 
-export { register };
+export { register, login, refresh, logout, forgotPassword };
