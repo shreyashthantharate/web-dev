@@ -33,7 +33,7 @@ const userSchema = new mongoose.schema(
       type: Boolean,
       default: false,
     },
-    verifivationToken: { type: String, select: false },
+    verificationToken: { type: String, select: false },
     refreshToken: { type: String, select: false },
     resetPasswordToken: { type: String, select: false },
     resetPasswordExpires: { type: String, select: false },

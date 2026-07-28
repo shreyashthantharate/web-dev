@@ -36,4 +36,11 @@ const getMe = async (req, res) => {
   ApiResponse.ok(res, "User Profile", user);
 };
 
+const verifyEmail = async (req, res) => {
+  let token = req.params.token;
+  const user = await authService.verifyEmail(token);
+
+  ApiResponse.ok(res, "Verification Successfull", user);
+};
+
 export { register, login, logout, getMe };
