@@ -13,6 +13,6 @@ router.post("/login", validate(LoginDto), controller.login);
 
 router.post("/logout", authenticate, controller.logout);
 
-router.get("/me", authenticate, controller.gtMe);
+router.get("/me", authenticate, controller.getMe);
 
 export default router;
