@@ -2,13 +2,15 @@ import { sendVerificationEmail } from "../../common/config/email.js";
 import ApiError from "../../common/utils/api-error.js";
 import {
   generateAccessToken,
+  generateRefreshToken,
   generateResetToken,
   verifyRefreshToken,
 } from "../../common/utils/jwt.utils.js";
 import User from "./auth.model.js";
+import crypto from "crypto";
 
 const hashedToken = (token) =>
-  crypto.createHash("sha256").update(toekn).digest("hex");
+  crypto.createHash("sha256").update(token).digest("hex");
 
 const register = async ({ name, email, password, role }) => {
   // do user registration
@@ -29,12 +31,12 @@ const register = async ({ name, email, password, role }) => {
   // send an email to user with token: rawToken
 
   try {
-    await sendVerificationEmail(email, token);
+    await sendVerificationEmail(user.email, rawToken);
   } catch (error) {
     console.log("Error in sending email: ", error);
   }
 
-  const userobj = user.toObject();
+  const userObj = user.toObject();
   delete userObj.password;
   delete userObj.verificationToken;
 
@@ -59,7 +61,7 @@ const login = async ({ email, password }) => {
   }
 
   const accessToken = generateAccessToken({ id: user._id, role: user.role });
-  const refreshToken = generateResetToken({ id: user._id });
+  const refreshToken = generateRefreshToken({ id: user._id });
 
   user.refreshToken = hashedToken(refreshToken);
 
@@ -111,8 +113,8 @@ const forgotPassword = async (email) => {
 };
 
 const verifyEmail = async (token) => {
-  const hashedToken = hashedToken(token);
-  const user = await User.findOne({ verificationToken: hashedToken }).select(
+  const hashToken = hashedToken(token);
+  const user = await User.findOne({ verificationToken: hashToken }).select(
     "+verificationToken",
   );
 

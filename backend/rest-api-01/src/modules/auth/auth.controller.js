@@ -26,7 +26,7 @@ const login = async (req, res) => {
 };
 
 const logout = async (req, res) => {
-  await authService.logout(req.user._id);
+  await authService.logout(req.user.id);
   res.clearCookie("refreshToken");
   ApiResponse.ok(res, "Logout Success");
 };
@@ -38,7 +38,6 @@ const getMe = async (req, res) => {
 
 const verifyEmail = async (req, res) => {
   let token = req.params.token;
-  console.log(`token is: ${token}`);
   const user = await authService.verifyEmail(token);
 
   ApiResponse.ok(res, "Verification Successfull", user);

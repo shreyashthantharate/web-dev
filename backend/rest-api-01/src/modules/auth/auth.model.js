@@ -1,11 +1,11 @@
-import { required } from "joi";
+import Joi from "joi";
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 
-const userSchema = new mongoose.schema(
+const userSchema = new mongoose.Schema(
   {
     name: {
-      type: Sring,
+      type: String,
       trim: true,
       minlength: 2,
       maxlength: 50,
@@ -42,10 +42,17 @@ const userSchema = new mongoose.schema(
 );
 
 userSchema.pre("save", async function (next) {
-  if (!this.isModified("password")) return next();
+  if (!this.isModified("password")) return;
+  //  next();
   this.password = await bcrypt.hash(this.password, 12);
-  next();
+  // next();
 });
+
+// userSchema.pre("save", function (next) {
+//   if (!this.isModified("password")) return next();
+//   this.password = bcrypt.hash(this.password, 12);
+//   next();
+// });
 
 userSchema.methods.comparePassword = async function (clearTextPassword) {
   return bcrypt.compare(clearTextPassword, this.password);

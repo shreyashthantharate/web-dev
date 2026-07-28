@@ -1,4 +1,4 @@
-import Joi, { required } from "joi";
+import Joi from "joi";
 import BaseDto from "../../../common/dto/base.dto.js";
 
 class RegisterDto extends BaseDto {
@@ -6,9 +6,8 @@ class RegisterDto extends BaseDto {
     name: Joi.string().trim().min(2).max(50).required(),
     email: Joi.string().email().lowercase().required(),
     password: Joi.string()
-      .pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm)
-      .message("Password must contain 8 characters minimum")
       .min(8)
+      .message("Password must contain 8 characters minimum")
       .required(),
     role: Joi.string().valid("customer", "seller").default("customer"),
   });
