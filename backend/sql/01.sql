@@ -27,3 +27,7 @@ CREATE TABLE students(
 
 ALTER TABLE students
 ADD COLUMN batch_name VARCHAR(50) DEFAULT 'Web Dev 2026';
+
+-- what is DDL?
+-- Data Defination Language
+-- It is a structure which we use to define a structure in SQL Database
