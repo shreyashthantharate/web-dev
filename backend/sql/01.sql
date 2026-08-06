@@ -19,7 +19,11 @@ CREATE TABLE students(
 
   current_score INT DEFAULT 0 CHECK (current_score >= 0 AND current_score <= 100),
 
-  enrolement_date DATE DEFAULT CURRENT_DATE -- default this is UTC
+  enrolement_date DATE DEFAULT CURRENT_DATE -- default this is UTC ('2026-08-30')
   -- enrolement_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   -- enrolement_date TTIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
 );
+
+
+ALTER TABLE students
+ADD COLUMN batch_name VARCHAR(50) DEFAULT 'Web Dev 2026';
