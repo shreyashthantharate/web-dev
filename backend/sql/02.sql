@@ -83,7 +83,7 @@ from ipl_players
 ORDER BY auction_price_crores desc;
 
 
--- Multi Column sorting
+-- Multi Column Sorting
 -- sort team alphabetical order and sort auction_price_crores in descending
 select team, nickname, auction_price_crores
 from ipl_players
@@ -123,3 +123,14 @@ offset (page - 1) * limit; -- page hear is your page number
 -- page 1: (3 - 1) * 15 = 30 -- offset
 -- page 1: (4 - 1) * 15 = 45 -- offset
 
+
+-- ! Modification data in runtime
+
+-- price is in crores, i want in lakhs
+select name, team, auction_price_crores, (auction_price_crores * 100) as price_in_lakhs
+from ipl_players;
+
+
+-- addition of 2cr for each player in price
+select name, team, auction_price_crores, (auction_price_crores + 2) as new_auction_price
+from ipl_players;
