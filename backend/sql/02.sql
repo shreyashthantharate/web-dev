@@ -33,3 +33,7 @@ INSERT INTO ipl_players (name, team, role, runs_scored, wickets_taken, auction_p
 
 
 
+select * from ipl_players;
+
+select name, nickname, team from ipl_players;
+
