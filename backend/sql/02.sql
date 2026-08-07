@@ -32,8 +32,94 @@ INSERT INTO ipl_players (name, team, role, runs_scored, wickets_taken, auction_p
 ('Mystery Player', NULL, 'Batsman', 100, 22, 1.00, 'Mystery Man'); -- Unsold / No Team (NULL Demo)
 
 
-
 select * from ipl_players;
 
 select name, nickname, team from ipl_players;
+
+
+-- ! Filtering
+
+select * from ipl_players where team = 'Mumbai Indians';
+
+select name, nickname, auction_price_crores from ipl_players where auction_price_crores > 10;
+
+
+-- ! LOGICAL OPERATORS (AND, OR)
+
+select * from ipl_players where role = 'All-Rounder' and wickets_taken > 10;
+
+select * from ipl_players where team = 'CSK' or team = 'RCB';
+
+
+-- ! Pattern matching
+
+-- return player where 2nd char or player name is 'a'
+select * from ipl_players where name like '_a%';
+
+-- return player where 3rd char or player name is 's'
+select * from ipl_players where name like '__s%';
+
+-- not case sensetive
+select * from ipl_players where name ilike '__S%';
+
+
+-- return players in team 
+select * from ipl_players where team in ('Mumbai Indians', 'KKR', 'Gujarat Titans', 'CSK', 'RCB');
+
+
+-- return players where price is between 10cr and 15cr
+select * from ipl_players where auction_price_crores between 10 and 15;
+
+
+-- return all players from all teams expect 'RCB'
+select * from ipl_players where team != 'RCB';
+select * from ipl_players where team <> 'CSK';
+
+
+-- ! Sorting
+-- Single Column Sorting
+select name, nickname, auction_price_crores
+from ipl_players
+ORDER BY auction_price_crores desc;
+
+
+-- Multi Column sorting
+-- sort team alphabetical order and sort auction_price_crores in descending
+select team, nickname, auction_price_crores
+from ipl_players
+ORDER BY team asc, auction_price_crores desc;
+
+
+-- ! Pagination
+
+-- Top 3 most valuable players
+select name, team, auction_price_crores
+from ipl_players
+ORDER BY auction_price_crores desc;
+limit 3; -- increase limit to get more number of players
+
+
+-- offset : skip what ever the value is provided 
+-- (how many rows i want to skip)
+
+-- return 3 expensive players but skip first 3 and then return next 3
+select name, team, auction_price_crores
+from ipl_players
+ORDER BY auction_price_crores desc
+limit 3
+offset 3;
+
+
+-- how pagination works
+select name, team , auction_price_crores
+from ipl_players
+ORDER BY auction_price_crores desc
+limit 15
+offset (page - 1) * limit; -- page hear is your page number
+
+-- how it works
+-- page 1: (1 - 1) * 15 = 0 -- offset
+-- page 1: (2 - 1) * 15 = 15 -- offset
+-- page 1: (3 - 1) * 15 = 30 -- offset
+-- page 1: (4 - 1) * 15 = 45 -- offset
 
