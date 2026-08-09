@@ -19,7 +19,7 @@ VALUES
 ('Ice Tea', 'Beverages', 40),
 ('Idli', 'Snacks', 50);
 
-
+--Update data
 UPDATE canteen_menu
 SET price = 20
 WHERE item_name = 'Vada Pav';-- ! How you can get distinct values
@@ -38,7 +38,19 @@ UPDATE canteen_menu
 SET is_available = TRUE, price = 30
 WHERE item_name = 'Samosa';
 
+
+-- DRY RUN in sql (must do dry run before update or delete)
+SELECT * FROM canteen_menu
+WHERE item_name = 'Samosa';
+
+
+-- Delete data
+DELETE FROM canteen_menu
+WHERE item_name = 'Samosa';
+
+TRUNCATE TABLE canteen_menu;
+
+-- What is DML
+-- Data Manipulation Language: to add, update, delete, and read data inside a database table
+
 SELECT * FROM canteen_menu;
-
-
-
