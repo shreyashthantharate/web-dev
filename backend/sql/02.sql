@@ -134,3 +134,13 @@ from ipl_players;
 -- addition of 2cr for each player in price
 select name, team, auction_price_crores, (auction_price_crores + 2) as new_auction_price
 from ipl_players;
+
+
+-- ! How you can get distinct values
+-- disctinct only returns unique values
+
+select distinct role from ipl_players;
+
+
+-- What is DQL?
+-- Data Query Language: fetch and retrieve data from databases using the SELECT statement.
