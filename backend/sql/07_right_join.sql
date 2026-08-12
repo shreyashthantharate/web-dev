@@ -10,3 +10,10 @@
 -- Since all internships currently have valid students (thanks to our Foreign Key), 
 -- this gives the same result as an Inner Join in our data. 
 
+SELECT
+  s.name,
+  s.branch,
+  i.company_name,
+  i.stipend
+FROM student AS s
+RIGHT JOIN internships AS i ON i.student_id = s.student_id;
