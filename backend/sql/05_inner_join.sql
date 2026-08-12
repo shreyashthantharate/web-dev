@@ -68,3 +68,19 @@ select * from student;
 select * from internships;
 
 
+
+-- Joins
+
+-- Inner Join
+-- Get student data in internship table on runtime
+
+
+SELECT s.name,
+  s.branch,
+  i.company_name,
+  i.role,
+  i.stipend
+FROM student AS s
+INNER JOIN internships AS i ON s.student_id = i.student_id;
+
+
