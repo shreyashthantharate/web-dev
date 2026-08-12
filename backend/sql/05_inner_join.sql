@@ -89,3 +89,12 @@ SELECT
   i.*
 FROM student AS s
 INNER JOIN internships AS i ON s.student_id = i.student_id;
+
+
+
+SELECT
+  s.*,
+  i.*
+FROM student AS s
+INNER JOIN internships AS i ON s.student_id = i.student_id
+INNER JOIN profiles AS p ON p.student_id = i.student_id;
