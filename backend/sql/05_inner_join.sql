@@ -83,6 +83,16 @@ SELECT s.name,
 FROM student AS s
 INNER JOIN internships AS i ON s.student_id = i.student_id;
 
+
+-- ====================================================
+-- 1. INNER JOIN (The "Match Maker")
+-- ====================================================
+
+-- Definition: Returns records ONLY when there is a match in BOTH tables.
+-- Students without internships (Priya, Rohan) -> Excluded.
+-- Internships without valid students (like student 99) -> Excluded (if any existed).
+
+
 -- To get all columns of both table with joins
 SELECT
   s.*,
