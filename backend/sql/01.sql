@@ -6,7 +6,7 @@ CREATE TABLE students(
   last_name VARCHAR(50), --(50 is bytes) 50 * 8 bits
 
   email VARCHAR(322) UNIQUE NOT NULL,
-  phone_number CHAR(10) UNIQUE,  -- 4000 bytes vs 10 bytes
+  phone_number CHAR(10) UNIQUE,  -- 4 bytes vs 10 bytes
   country_code VARCHAR(4),
 
   age INT CHECK(age > 12), -- check age should be greater then 12
