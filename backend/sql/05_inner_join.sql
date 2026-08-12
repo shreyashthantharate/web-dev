@@ -83,4 +83,9 @@ SELECT s.name,
 FROM student AS s
 INNER JOIN internships AS i ON s.student_id = i.student_id;
 
-
+-- To get all columns of both table with joins
+SELECT
+  s.*,
+  i.*
+FROM student AS s
+INNER JOIN internships AS i ON s.student_id = i.student_id;
