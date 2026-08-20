@@ -29,3 +29,6 @@ import fs from "node:fs";
 // Delete
 // To delete the file
 // fs.unlinkSync("test.txt");
+
+// Rename the file
+fs.renameSync("test.txt", "test1.txt");
