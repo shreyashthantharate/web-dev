@@ -38,4 +38,6 @@ import fs from "node:fs";
 // fs.cpSync() can also copy entire directory trees if you pass the { recursive: true }
 
 // Delete the folder
-fs.rmdirSync("myFolder", { recursive: true });
+// fs.rmdirSync("myFolder", { recursive: true });
+// rmdir use to delete empty directories only
+// rmSync gives you full control.
