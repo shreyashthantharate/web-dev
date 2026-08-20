@@ -34,5 +34,8 @@ import fs from "node:fs";
 // fs.renameSync("test.txt", "test1.txt");
 
 // Copy the file
-fs.cpSync("test1.txt", "finalTest.txt");
+// fs.cpSync("test1.txt", "finalTest.txt");
 // fs.cpSync() can also copy entire directory trees if you pass the { recursive: true }
+
+// Delete the folder
+fs.rmdirSync("myFolder", { recursive: true });
