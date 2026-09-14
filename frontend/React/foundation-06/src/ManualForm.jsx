@@ -39,6 +39,24 @@ const ManualForm = () => {
       </div>
     );
   }
+
+  return (
+    <div>
+      <form onSubmit={submit} noValidate>
+        <label>
+          Full Name
+          <input value={values.name} onChange={set("name")} />
+          {errors.name && <span>{errors.name}</span>}
+        </label>
+        <label>
+          Email
+          <input type="email" value={values.email} onChange={set("email")} />
+          {errors.email && <span>{errors.email}</span>}
+        </label>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
 };
 
 export default ManualForm;
