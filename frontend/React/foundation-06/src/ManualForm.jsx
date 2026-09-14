@@ -35,7 +35,12 @@ const ManualForm = () => {
   if (submitted) {
     return (
       <div>
-        <h1>Form submitted successfully</h1>
+        <h1>
+          Form submitted successfully {values.name} {values.email}
+        </h1>
+        <button onClick={() => window.location.reload()}>
+          Next Submittion
+        </button>
       </div>
     );
   }
